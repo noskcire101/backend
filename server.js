@@ -1,16 +1,32 @@
 require('dotenv').config();
 
 const express = require("express");
+const mongoose = require('mongoose');
+const personDataRoutes = require('./routes/personDataRoutes.js');
 
 //express app
 const app = express();
 
-// routes
-app.get('/',(req, res) => {
-    res.json({'Welcome to the app'});
-});
 
-//listen for requests
-app.listen(process.env.PORT, () => {
-    console.log("Server is listening on port 4000!!");
-});
+// middleware
+app.use(express.json());
+
+app.use((req, res, next) => {
+    console.log(req.path, req.method);
+    next();
+})
+
+// routes
+app.use('/api/person',personDataRoutes)
+
+// connect to db
+mongoose.connect(process.env.MONGO_URI)
+.then(()=>{
+    // listen for requests
+    app.listen(process.env.PORT, () => {
+        console.log("Server is listening on port", process.env.PORT);
+    });
+})
+.catch((err)=>{
+    console.log(err);
+})
