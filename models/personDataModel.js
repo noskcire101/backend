@@ -15,5 +15,5 @@ const personDataModelSchema = new Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('personData', personDataModelSchema)
+module.exports = mongoose.model('personDatas', personDataModelSchema)
 

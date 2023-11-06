@@ -1,29 +1,21 @@
 const express = require('express');
-const {createPersonData} = require('../models/personDataModel');
+const {createPersonData, getSinglePersonData, getAllPersonData, updatePersonData, deletePersonData} = require('../controller/personDataController');
 
 const router = express.Router();
 
 // GET all data
-router.get('/', (req, res) => {
-    res.json({mssg: 'GET all data'});
-})
+router.get('/', getAllPersonData)
 
 // GET single data
-router.get('/:id', (req, res) => {
-    res.json({mssg: 'GET single data'});
-})
+router.get('/:id', getSinglePersonData)
 
 // POST new data
 router.post('/', createPersonData)
 
-// DELTE new data
-router.delete('/:id', (req, res) => {
-    res.json({mssg: 'DELETE data'});
-})
+// DELETE new data
+router.delete('/:id', deletePersonData)
 
-// DELTE new data
-router.patch('/:id', (req, res) => {
-    res.json({mssg: 'UPDATE data'});
-})
+// UPDATE new data
+router.patch('/:id', updatePersonData)
 
 module.exports = router
