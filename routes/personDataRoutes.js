@@ -1,5 +1,5 @@
 const express = require('express');
-const {createPersonData, getSinglePersonData, getAllPersonData, updatePersonData, deletePersonData} = require('../controller/personDataController');
+const {createPersonData, getSinglePersonData, getAllPersonData, updatePersonData, deletePersonData} = require('../controllers/personDataController');
 
 const router = express.Router();
 

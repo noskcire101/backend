@@ -15,7 +15,7 @@ const userAuthSchema = new Schema({
         type:String,
         required: true
     }
-})
+},{timestamps: true})
 
 //static signup methods
 userAuthSchema.statics.signup = async function (email, password){
