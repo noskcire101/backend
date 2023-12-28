@@ -28,8 +28,6 @@ const registerUser = async (req, res) => {
 
     try{
         const user = await userAuth.signup(email, password);
-
-
         //create token
         const token = createToken(user._id);
 
